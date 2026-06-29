@@ -49,6 +49,7 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
 @keyframes lineGrow{from{height:0}to{height:100%}}
 @keyframes scrollBlink{0%,100%{opacity:1;text-shadow:0 0 8px rgba(58,126,224,1),0 0 20px rgba(58,126,224,.9),0 0 40px rgba(58,126,224,.7),0 0 60px rgba(58,126,224,.5)}50%{opacity:.15;text-shadow:none}}
 @keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.25;transform:scaleY(.5)}}
+@keyframes scrollSync{0%,100%{opacity:1}50%{opacity:.15}}
 [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease}
 [data-reveal].in-view{opacity:1;transform:translateY(0)}
 
@@ -97,6 +98,16 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
   #contact{padding:80px 24px 80px !important}
   #contact h2{font-size:28px !important}
 
+  /* NEWSLETTER */
+  #newsletter{padding:80px 24px !important}
+  #newsletter h2{font-size:30px !important}
+  #newsletter-featured{grid-template-columns:1fr !important}
+  #newsletter-featured > div:first-child{max-height:260px;overflow:hidden}
+  #newsletter-featured > div:last-child{padding:32px 24px !important;border-left:none !important;border-top:3px solid #3A7EE0 !important}
+  #newsletter-backnumber > div:last-child{grid-template-columns:repeat(2,1fr) !important}
+  .newsletter-modal{padding:12px !important}
+  .newsletter-modal > div{max-height:95vh}
+
   /* FOOTER */
   footer{padding:56px 24px 0 !important}
   footer > div > div:first-child{grid-template-columns:1fr 1fr !important;gap:40px 24px !important}
@@ -116,6 +127,8 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
     <a href="#about" style="font:300 11px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#2B4048;text-decoration:none;text-transform:uppercase;opacity:.75">About</a>
     <a href="#activities" style="font:300 11px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#2B4048;text-decoration:none;text-transform:uppercase;opacity:.75">Activities</a>
     <a href="#story" style="font:300 11px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#2B4048;text-decoration:none;text-transform:uppercase;opacity:.75">Story</a>
+    <a href="#news" style="font:300 11px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#2B4048;text-decoration:none;text-transform:uppercase;opacity:.75">News</a>
+    <a href="#newsletter" style="font:300 11px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#2B4048;text-decoration:none;text-transform:uppercase;opacity:.75">Newsletter</a>
     <a href="#contact" style="font:300 11px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#2B4048;text-decoration:none;text-transform:uppercase;opacity:.75">Contact</a>
   </div>
   <!-- Hamburger button (mobile only) -->
@@ -132,6 +145,8 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
   <a href="#activities" onClick="{{ closeMenu }}" style="font:300 28px/1 'Zen Kaku Gothic Antique',sans-serif;letter-spacing:.1em;color:#2B4048;text-decoration:none">Activities</a>
   <a href="#story" onClick="{{ closeMenu }}" style="font:300 28px/1 'Zen Kaku Gothic Antique',sans-serif;letter-spacing:.1em;color:#2B4048;text-decoration:none">Story</a>
   <a href="#support" onClick="{{ closeMenu }}" style="font:300 28px/1 'Zen Kaku Gothic Antique',sans-serif;letter-spacing:.1em;color:#2B4048;text-decoration:none">Support</a>
+  <a href="#news" onClick="{{ closeMenu }}" style="font:300 28px/1 'Zen Kaku Gothic Antique',sans-serif;letter-spacing:.1em;color:#2B4048;text-decoration:none">News</a>
+  <a href="#newsletter" onClick="{{ closeMenu }}" style="font:300 28px/1 'Zen Kaku Gothic Antique',sans-serif;letter-spacing:.1em;color:#2B4048;text-decoration:none">Newsletter</a>
   <a href="#contact" onClick="{{ closeMenu }}" style="font:300 28px/1 'Zen Kaku Gothic Antique',sans-serif;letter-spacing:.1em;color:#2B4048;text-decoration:none">Contact</a>
 </div>
 
@@ -147,9 +162,9 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
     </h1>
   </div>
   
-  <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;animation:fadeUp 1.2s ease both;animation-delay:.9s">
-    <span style="font:500 12px/1 'Space Grotesk',sans-serif;letter-spacing:.38em;color:#fff;text-transform:uppercase;animation:scrollBlink 4.5s ease-in-out infinite">Scroll</span>
-    <div style="width:1.5px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.9),transparent);filter:drop-shadow(0 0 4px rgba(255,255,255,.5));animation:scrollPulse 3s ease-in-out infinite;transform-origin:top center"></div>
+  <div style="position:absolute;bottom:40px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;animation:fadeUp 1.2s ease both;animation-delay:.9s">
+    <span style="font:500 12px/1 'Space Grotesk',sans-serif;letter-spacing:.38em;color:#fff;text-transform:uppercase;animation:scrollSync 3s ease-in-out infinite">Scroll</span>
+    <div style="width:1.5px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.9),transparent);filter:drop-shadow(0 0 4px rgba(255,255,255,.5));animation:scrollSync 3s ease-in-out infinite;transform-origin:top center"></div>
   </div>
 </section>
 
@@ -342,7 +357,7 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
     <p data-reveal data-reveal-delay="120" style="font:300 14px/2 'Noto Sans JP',sans-serif;color:#5a7880;margin-bottom:72px">メンバーが毎月綴る、活動のすべて。</p>
 
     <!-- Latest issue featured -->
-    <div data-reveal data-reveal-delay="160" style="display:grid;grid-template-columns:2fr 3fr;gap:0;margin-bottom:64px;background:#fff;box-shadow:0 2px 24px rgba(43,64,72,.07)">
+    <div id="newsletter-featured" data-reveal data-reveal-delay="160" style="display:grid;grid-template-columns:2fr 3fr;gap:0;margin-bottom:64px;background:#fff;box-shadow:0 2px 24px rgba(43,64,72,.07)">
       <!-- Page 1 large -->
       <div style="overflow:hidden;cursor:pointer;align-self:stretch;display:flex;align-items:stretch" onClick="{{ openNewsletter }}">
         <img src="uploads/IMG_2158 2.jpg" alt="Nexus Story Vol.2 1ページ目" style="width:100%;object-fit:cover;object-position:top;transition:transform .6s ease;display:block" onMouseOver="this.style.transform='scale(1.02)'" onMouseOut="this.style.transform='scale(1)'">
@@ -384,7 +399,7 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
     </div>
 
     <!-- Backnumber grid -->
-    <div data-reveal data-reveal-delay="200">
+    <div id="newsletter-backnumber" data-reveal data-reveal-delay="200">
       <p style="font:400 10px/1 'Space Grotesk',sans-serif;letter-spacing:.28em;color:rgba(43,64,72,.4);text-transform:uppercase;margin-bottom:32px">Backnumber</p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
 
@@ -496,8 +511,9 @@ body{background:#F8FCFA;color:#2B4048;-webkit-font-smoothing:antialiased}
           <a href="#about" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">About</a>
           <a href="#activities" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">Activities</a>
           <a href="#story" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">Story</a>
-          <a href="#news" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">News</a>
           <a href="#support" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">Support</a>
+          <a href="#news" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">News</a>
+          <a href="#newsletter" style="font:300 14px/1 'Noto Sans JP',sans-serif;color:rgba(248,252,250,.7);text-decoration:none;letter-spacing:.04em">Newsletter</a>
         </div>
       </div>
 
